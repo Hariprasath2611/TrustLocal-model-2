@@ -1,7 +1,7 @@
 import { MemberProvider } from '@/context/MemberContext';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
-import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
+import ErrorPage from '@/components/pages/ErrorPage';
 import HomePage from '@/components/pages/HomePage';
 import CustomerDashboard from '@/components/pages/CustomerDashboard';
 import ServiceRequestDetails from '@/components/pages/ServiceRequestDetails';
