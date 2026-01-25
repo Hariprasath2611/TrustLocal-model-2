@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Calendar, Clock, CheckCircle } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { ServiceRequests } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -22,10 +22,10 @@ export default function TechnicianDashboard() {
   const loadRequests = async () => {
     setIsLoading(true);
     const result = await BaseCrudService.getAll<ServiceRequests>('servicerequests', {}, { limit: 50 });
-    
+
     const available = result.items.filter(r => r.status === 'Pending');
     const accepted = result.items.filter(r => r.status === 'In Progress' || r.status === 'Accepted');
-    
+
     setAvailableRequests(available);
     setAcceptedRequests(accepted);
     setIsLoading(false);
@@ -97,7 +97,7 @@ export default function TechnicianDashboard() {
           <h2 className="font-heading text-3xl uppercase text-foreground mb-8">
             Available Service Requests
           </h2>
-          
+
           <div className="min-h-[300px]">
             {isLoading ? null : availableRequests.length > 0 ? (
               <div className="grid md:grid-cols-2 gap-6">
@@ -115,7 +115,7 @@ export default function TechnicianDashboard() {
                     <p className="font-paragraph text-base text-secondary-foreground mb-4 line-clamp-2">
                       {request.serviceDescription}
                     </p>
-                    
+
                     <div className="space-y-2 mb-6 font-paragraph text-sm text-secondary-foreground">
                       <div className="flex items-center gap-2">
                         <MapPin className="w-4 h-4 text-primary" />
@@ -158,7 +158,7 @@ export default function TechnicianDashboard() {
           <h2 className="font-heading text-3xl uppercase text-foreground mb-8">
             My Active Jobs
           </h2>
-          
+
           <div className="min-h-[300px]">
             {isLoading ? null : acceptedRequests.length > 0 ? (
               <div className="grid gap-6">

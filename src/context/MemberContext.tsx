@@ -5,6 +5,13 @@ interface MemberContextType {
     loading: boolean;
     login: () => void;
     logout: () => void;
+    // Aliases for compatibility
+    isAuthenticated: boolean;
+    isLoading: boolean;
+    actions: {
+        login: () => void;
+        logout: () => void;
+    }
 }
 
 const MemberContext = createContext<MemberContextType | undefined>(undefined);
@@ -26,16 +33,29 @@ export function MemberProvider({ children }: { children: React.ReactNode }) {
     }, []);
 
     const login = () => {
-        // Mock login
         console.log("Mock login triggered");
+        setMember({ id: 'mock-user', name: 'Mock User' });
     };
 
     const logout = () => {
         setMember(null);
     };
 
+    const value = {
+        member,
+        loading,
+        login,
+        logout,
+        isAuthenticated: !!member,
+        isLoading: loading,
+        actions: {
+            login,
+            logout
+        }
+    };
+
     return (
-        <MemberContext.Provider value={{ member, loading, login, logout }}>
+        <MemberContext.Provider value={value}>
             {children}
         </MemberContext.Provider>
     );

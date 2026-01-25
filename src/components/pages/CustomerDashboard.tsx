@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Plus, Clock, CheckCircle, XCircle } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { ServiceRequests } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -43,7 +43,7 @@ export default function CustomerDashboard() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const newRequest: ServiceRequests = {
       _id: crypto.randomUUID(),
       serviceTitle: formData.serviceTitle,
@@ -241,13 +241,12 @@ export default function CustomerDashboard() {
                         </div>
                       </div>
                       <div className="flex flex-col items-end justify-between">
-                        <span className={`font-paragraph text-sm px-4 py-2 rounded ${
-                          request.status === 'Completed' 
-                            ? 'bg-primary text-primary-foreground' 
+                        <span className={`font-paragraph text-sm px-4 py-2 rounded ${request.status === 'Completed'
+                            ? 'bg-primary text-primary-foreground'
                             : request.status === 'Cancelled'
-                            ? 'bg-destructive text-destructiveforeground'
-                            : 'bg-background text-foreground'
-                        }`}>
+                              ? 'bg-destructive text-destructiveforeground'
+                              : 'bg-background text-foreground'
+                          }`}>
                           {request.status || 'Pending'}
                         </span>
                       </div>

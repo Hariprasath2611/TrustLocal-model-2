@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useMember } from '@/integrations';
+import { useMember } from '@/context/MemberContext';
 import { SignIn } from '@/components/ui/sign-in';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 

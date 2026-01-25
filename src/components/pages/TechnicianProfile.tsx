@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, CheckCircle, MapPin, Briefcase } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { Technicians, Reviews } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -38,9 +38,8 @@ export default function TechnicianProfile() {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${
-          i < rating ? 'text-primary fill-primary' : 'text-neutralborder'
-        }`}
+        className={`w-4 h-4 ${i < rating ? 'text-primary fill-primary' : 'text-neutralborder'
+          }`}
       />
     ));
   };
@@ -77,7 +76,7 @@ export default function TechnicianProfile() {
               transition={{ duration: 0.5 }}
             >
               {/* Back Button */}
-              <Link 
+              <Link
                 to="/technicians"
                 className="inline-flex items-center gap-2 font-paragraph text-base text-secondary-foreground hover:text-primary transition-colors mb-8"
               >
@@ -151,11 +150,10 @@ export default function TechnicianProfile() {
                   {/* Availability Status */}
                   <div className="flex items-center gap-3 pt-6 border-t border-neutralborder">
                     <span className="font-paragraph text-base text-foreground">Status:</span>
-                    <span className={`font-paragraph text-sm px-4 py-2 rounded ${
-                      technician.isAvailable 
-                        ? 'bg-primary text-primary-foreground' 
+                    <span className={`font-paragraph text-sm px-4 py-2 rounded ${technician.isAvailable
+                        ? 'bg-primary text-primary-foreground'
                         : 'bg-background text-secondary-foreground'
-                    }`}>
+                      }`}>
                       {technician.isAvailable ? 'Available for Work' : 'Currently Busy'}
                     </span>
                   </div>

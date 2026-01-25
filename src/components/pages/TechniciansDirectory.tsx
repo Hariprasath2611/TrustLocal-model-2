@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Star, CheckCircle, Search } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { Technicians } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -24,7 +24,7 @@ export default function TechniciansDirectory() {
     if (searchQuery.trim() === '') {
       setFilteredTechnicians(technicians);
     } else {
-      const filtered = technicians.filter(tech => 
+      const filtered = technicians.filter(tech =>
         tech.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         tech.skills?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         tech.bio?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -130,11 +130,10 @@ export default function TechniciansDirectory() {
                             {technician.averageRating?.toFixed(1) || 'N/A'}
                           </span>
                         </div>
-                        <span className={`font-paragraph text-xs px-3 py-1 rounded ${
-                          technician.isAvailable 
-                            ? 'bg-primary text-primary-foreground' 
+                        <span className={`font-paragraph text-xs px-3 py-1 rounded ${technician.isAvailable
+                            ? 'bg-primary text-primary-foreground'
                             : 'bg-background text-secondary-foreground'
-                        }`}>
+                          }`}>
                           {technician.isAvailable ? 'Available' : 'Busy'}
                         </span>
                       </div>

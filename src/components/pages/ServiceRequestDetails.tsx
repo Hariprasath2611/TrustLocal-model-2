@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MapPin, Calendar, Clock, User } from 'lucide-react';
-import { BaseCrudService } from '@/integrations';
+import { BaseCrudService } from '@/lib/mock-service';
 import { ServiceRequests } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -72,7 +72,7 @@ export default function ServiceRequestDetails() {
               transition={{ duration: 0.5 }}
             >
               {/* Back Button */}
-              <Link 
+              <Link
                 to="/customer-dashboard"
                 className="inline-flex items-center gap-2 font-paragraph text-base text-secondary-foreground hover:text-primary transition-colors mb-8"
               >
@@ -87,13 +87,12 @@ export default function ServiceRequestDetails() {
                     <h1 className="font-heading text-3xl md:text-4xl uppercase text-foreground mb-4">
                       {request.serviceTitle}
                     </h1>
-                    <span className={`inline-block font-paragraph text-sm px-4 py-2 rounded ${
-                      request.status === 'Completed' 
-                        ? 'bg-primary text-primary-foreground' 
+                    <span className={`inline-block font-paragraph text-sm px-4 py-2 rounded ${request.status === 'Completed'
+                        ? 'bg-primary text-primary-foreground'
                         : request.status === 'Cancelled'
-                        ? 'bg-destructive text-destructiveforeground'
-                        : 'bg-background text-foreground'
-                    }`}>
+                          ? 'bg-destructive text-destructiveforeground'
+                          : 'bg-background text-foreground'
+                      }`}>
                       {request.status || 'Pending'}
                     </span>
                   </div>
