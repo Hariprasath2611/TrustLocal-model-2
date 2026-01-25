@@ -1,147 +1,173 @@
-# Wixstro - Wix Astro Template
+**TrustLocal**
 
-A modern, full-featured Wix Astro template built with React, TypeScript, and Tailwind CSS. This template provides a solid foundation for building dynamic, interactive websites with Wix's powerful ecosystem.
+TrustLocal is a B2C on-demand service platform that connects customers with nearby local technicians using a live lead-dispatch model, similar to ride-hailing platforms like Ola or Rapido, but designed for local services.
 
-## 🚀 Features
+The platform focuses on trust, speed, and low friction, allowing customers to request services without paying online and enabling technicians to receive real-time job leads.
 
-- **Astro Framework** - Modern static site generator with server-side rendering
-- **React Integration** - Full React support with JSX components
-- **TypeScript** - Type-safe development experience
-- **Tailwind CSS** - Utility-first CSS framework with custom components
-- **Wix Integration** - Seamless integration with Wix services and APIs
-- **Modern UI Components** - Radix UI components with custom styling
-- **Authentication** - Built-in member authentication and protected routes
-- **CMS Integration** - Content management system integration
-- **Client-side Routing** - React Router for seamless navigation
-- **Responsive Design** - Mobile-first responsive design
-- **Testing** - Vitest testing framework setup
-- **Development Tools** - ESLint, TypeScript checking, and more
+**🚩 Problem Statement**
+Finding a reliable local service provider is often difficult. Existing platforms suffer from:
 
-## 🛠️ Tech Stack
+Fake or unreliable reviews
 
-- **Framework**: Astro 5.8.0
-- **Frontend**: React 18.3.0
-- **Styling**: Tailwind CSS 3.4.14
-- **Language**: TypeScript 5.8.3
-- **UI Components**: Radix UI
-- **State Management**: Zustand
-- **Forms**: React Hook Form with Zod validation
-- **Testing**: Vitest
-- **Build Tool**: Vite
-- **Deployment**: Cloudflare
+Unverified technicians
 
+High friction due to upfront online payments
 
-## 🚀 Getting Started
+Poor response time for urgent local services
 
-### Prerequisites
+At the same time, skilled local technicians struggle to get consistent work and visibility.
 
-- Node.js (version 18 or higher)
-- npm or yarn package manager
-- Wix account and site
+**💡 Solution**
 
-### Installation
+TrustLocal solves this by using a live lead-dispatch system:
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+Customers raise a service request without making any payment in the app
 
-2. **Set up environment variables**:
-   ```bash
-   npm run env
-   ```
+Requests are broadcast in real time to nearby, verified technicians who are online
 
-3. **Start development server**:
-   ```bash
-   npm run dev
-   ```
+Any technician can accept the lead and complete the job
 
-The development server will start and you can view your site at `http://localhost:4321`.
+Customers pay technicians directly in cash (COD)
 
-## 📁 Project Structure
+The platform earns through a commission model from technicians, similar to ride-hailing apps
 
-```
-main/
-├── src/
-│   ├── components/          # React components
-│   │   ├── ui/             # Reusable UI components
-│   │   ├── Head.tsx        # Page head component
-│   │   └── Router.tsx      # Routing component
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility functions
-│   ├── pages/              # Astro pages
-│   └── styles/             # Global styles
-├── integrations/           # Wix integrations
-│   ├── cms/               # CMS integration
-│   └── members/           # Member authentication
-├── public/                # Static assets
-└── eslint-rules/          # Custom ESLint rules
-```
+This model reduces customer hesitation, improves trust, and ensures faster service delivery.
 
-## 🎨 UI Components
+**🔁 How It Works**
 
-This template includes a comprehensive set of UI components built with Radix UI and styled with Tailwind CSS:
+Customer logs in and creates a service request
 
-- **Layout**: Accordion, Collapsible, Tabs, Sheet
-- **Forms**: Input, Select, Checkbox, Radio Group, Switch
-- **Navigation**: Navigation Menu, Menubar, Breadcrumb
-- **Feedback**: Alert, Toast, Progress, Skeleton
-- **Overlays**: Dialog, Popover, Tooltip, Hover Card
-- **Data Display**: Table, Card, Badge, Avatar
-- **Interactive**: Button, Toggle, Slider, Command
+The request becomes an open lead
 
-## 🔧 Available Scripts
+Online technicians with matching service categories receive the lead instantly
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run release` - Release to Wix
-- `npm run env` - Pull environment variables
-- `npm run check` - Type check with Astro
-- `npm run test:run` - Run tests
-- `npm install` - Install dependencies
+One technician accepts the lead
 
-## 🧪 Testing
+Service is completed and confirmed
 
-The project includes Vitest for testing:
+Customer pays the technician in cash
 
-```bash
-npm run test:run
-```
+Platform records commission for the completed job
 
-## 📱 Responsive Design
+Customer can leave a verified review
 
-The template is built with a mobile-first approach and includes:
+**👥 User Roles**
 
-- Responsive breakpoints
-- Touch-friendly interactions
-- Optimized images
-- Flexible layouts
+**Customer**
 
-## 🚀 Deployment
+Register and log in
 
-The template is configured for deployment on Cloudflare:
+Request local services
 
-```bash
-npm run build
-```
+Track service status
 
-## 🤝 Contributing
+Confirm job completion
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
+Leave reviews (only after completion)
 
-## 🆘 Support
+**Technician**
 
-For support and questions:
+Register and create a profile
 
-- Check the [Wix Developer Documentation](https://dev.wix.com/)
-- Review the [Astro Documentation](https://docs.astro.build/)
+Upload verification documents
 
+Toggle online/offline availability
 
----
+Receive live service leads
 
-Built with ❤️ using Wix Vibe, Astro, and modern web technologies.
+Accept and complete jobs
+
+Pay commission to the platform
+
+**Admin**
+
+Verify technician profiles
+
+Monitor service requests
+
+Track completed jobs
+
+Manage commission records
+
+**🧱 Tech Stack**
+
+**Frontend**
+
+React + Vite
+
+JavaScript
+
+Tailwind CSS
+
+**Backend**
+Node.js
+
+Express.js
+
+**Database & Services**
+
+Firebase Authentication
+
+Firebase Firestore
+
+Firebase Storage
+
+**📦 Firestore Data Model (Overview)**
+
+users – user roles and basic info
+
+technicians – technician profile, verification, availability
+
+serviceRequests – customer requests and job status
+
+reviews – verified reviews linked to completed jobs
+
+**🚫 Out of Scope**
+
+To keep the project hackathon-ready and focused:
+
+No payment gateway integration
+
+No in-app chat
+
+No notifications
+
+No AI / ML features
+
+**▶️ Demo**
+A short demo video (≈44 seconds) showcases:
+
+Service request creation
+
+Live lead dispatch to technicians
+
+Lead acceptance and job completion flow
+
+**🚀 Future Enhancements**
+
+Mobile app (React Native / Flutter)
+
+Real-time notifications
+
+GPS-based technician matching
+
+Online commission payment integration
+
+In-app chat between customer and technician
+
+**🧠 Hackathon Note**
+
+This project was built as a hackathon MVP with emphasis on:
+
+Clear problem understanding
+
+Realistic business model
+
+Clean and working core flow
+
+Scalability and advanced optimizations can be added in future iterations.
+
+**👤 Author**
+
+**Hariprasath D**
+**Solo Participant **– Hackathon Project
