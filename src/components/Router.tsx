@@ -1,4 +1,4 @@
-import { MemberProvider } from '@/integrations';
+import { MemberProvider } from '@/context/MemberContext';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
