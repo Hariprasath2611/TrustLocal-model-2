@@ -6,13 +6,13 @@ export class BaseCrudService {
         return { ...data, _id: 'mock-id-' + Date.now() };
     }
 
-    static async getById(collectionName: string, id: string) {
+    static async getById<T>(collectionName: string, id: string): Promise<T | null> {
         console.log(`[Mock] Read ${id} from ${collectionName}`);
         return {
             _id: id,
             name: 'Mock Item',
             // Add other common fields that might be expected
-        };
+        } as unknown as T;
     }
 
     static async update(collectionName: string, id: string, data: any) {

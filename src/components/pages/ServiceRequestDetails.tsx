@@ -21,7 +21,7 @@ export default function ServiceRequestDetails() {
   const loadRequest = async () => {
     setIsLoading(true);
     if (id) {
-      const data = await BaseCrudService.getById('servicerequests', id);
+      const data = await BaseCrudService.getById<ServiceRequests>('servicerequests', id);
       setRequest(data);
     }
     setIsLoading(false);
