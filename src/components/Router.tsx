@@ -28,7 +28,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        element: <HomePage />,
       },
       {
         path: "customer-dashboard",
