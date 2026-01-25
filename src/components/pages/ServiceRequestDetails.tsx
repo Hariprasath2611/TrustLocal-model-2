@@ -21,7 +21,7 @@ export default function ServiceRequestDetails() {
   const loadRequest = async () => {
     setIsLoading(true);
     if (id) {
-      const data = await BaseCrudService.getById<ServiceRequests>('servicerequests', id);
+      const data = await BaseCrudService.getById('servicerequests', id);
       setRequest(data);
     }
     setIsLoading(false);
@@ -111,7 +111,7 @@ export default function ServiceRequestDetails() {
                     <Calendar className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-paragraph text-sm text-secondary-foreground mb-1">Requested Date</p>
-                      <p className="font-paragraph text-base text-foreground">{request.requestedDate}</p>
+                      <p className="font-paragraph text-base text-foreground">{typeof request.requestedDate === 'string' ? request.requestedDate : new Date(request.requestedDate).toLocaleDateString()}</p>
                     </div>
                   </div>
 
