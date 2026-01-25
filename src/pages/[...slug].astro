@@ -2,6 +2,12 @@
 import { Head } from "@/components/Head";
 import AppRouter from "@/components/Router";
 import "@/styles/global.css";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: undefined } },
+  ];
+}
 ---
 
 <html lang="en" class="w-full h-full">
