@@ -123,7 +123,7 @@ export default function TechnicianDashboard() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-primary" />
-                        <span>{request.requestedDate}</span>
+                        <span>{typeof request.requestedDate === 'string' ? request.requestedDate : new Date(request.requestedDate).toLocaleDateString()}</span>
                       </div>
                       {request.requestedTime && (
                         <div className="flex items-center gap-2">
@@ -187,7 +187,7 @@ export default function TechnicianDashboard() {
                               </span>
                               <span className="flex items-center gap-2">
                                 <Calendar className="w-4 h-4 text-primary" />
-                                {request.requestedDate}
+                                {typeof request.requestedDate === 'string' ? request.requestedDate : new Date(request.requestedDate).toLocaleDateString()}
                               </span>
                               {request.requestedTime && (
                                 <span className="flex items-center gap-2">

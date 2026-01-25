@@ -236,16 +236,16 @@ export default function CustomerDashboard() {
                         </div>
                         <div className="flex flex-wrap gap-4 mt-4 font-paragraph text-sm text-secondary-foreground">
                           <span>📍 {request.serviceLocation}</span>
-                          <span>📅 {request.requestedDate}</span>
+                          <span>📅 {typeof request.requestedDate === 'string' ? request.requestedDate : new Date(request.requestedDate).toLocaleDateString()}</span>
                           {request.requestedTime && <span>🕐 {request.requestedTime}</span>}
                         </div>
                       </div>
                       <div className="flex flex-col items-end justify-between">
                         <span className={`font-paragraph text-sm px-4 py-2 rounded ${request.status === 'Completed'
-                            ? 'bg-primary text-primary-foreground'
-                            : request.status === 'Cancelled'
-                              ? 'bg-destructive text-destructiveforeground'
-                              : 'bg-background text-foreground'
+                          ? 'bg-primary text-primary-foreground'
+                          : request.status === 'Cancelled'
+                            ? 'bg-destructive text-destructiveforeground'
+                            : 'bg-background text-foreground'
                           }`}>
                           {request.status || 'Pending'}
                         </span>
