@@ -40,7 +40,7 @@ export default function TechnicianDashboard() {
     setAcceptedRequests(prev => [updatedRequest, ...prev]);
 
     try {
-      await BaseCrudService.update('servicerequests', { _id: requestId, status: 'Accepted' });
+      await BaseCrudService.update('servicerequests', requestId, { status: 'Accepted' });
     } catch (error) {
       loadRequests();
     }
@@ -58,7 +58,7 @@ export default function TechnicianDashboard() {
     }
 
     try {
-      await BaseCrudService.update('servicerequests', { _id: requestId, status: newStatus });
+      await BaseCrudService.update('servicerequests', requestId, { status: newStatus });
     } catch (error) {
       loadRequests();
     }

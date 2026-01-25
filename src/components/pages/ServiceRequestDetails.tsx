@@ -34,7 +34,7 @@ export default function ServiceRequestDetails() {
     setRequest(updatedRequest);
 
     try {
-      await BaseCrudService.update('servicerequests', { _id: request._id, status: newStatus });
+      await BaseCrudService.update('servicerequests', request._id, { status: newStatus });
     } catch (error) {
       loadRequest();
     }
@@ -88,10 +88,10 @@ export default function ServiceRequestDetails() {
                       {request.serviceTitle}
                     </h1>
                     <span className={`inline-block font-paragraph text-sm px-4 py-2 rounded ${request.status === 'Completed'
-                        ? 'bg-primary text-primary-foreground'
-                        : request.status === 'Cancelled'
-                          ? 'bg-destructive text-destructiveforeground'
-                          : 'bg-background text-foreground'
+                      ? 'bg-primary text-primary-foreground'
+                      : request.status === 'Cancelled'
+                        ? 'bg-destructive text-destructiveforeground'
+                        : 'bg-background text-foreground'
                       }`}>
                       {request.status || 'Pending'}
                     </span>
