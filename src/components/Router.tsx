@@ -28,9 +28,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        routeMetadata: {
-          pageIdentifier: 'home',
-        },
+        element: <HomePage />,
       },
       {
         path: "customer-dashboard",

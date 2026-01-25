@@ -131,8 +131,8 @@ export default function TechniciansDirectory() {
                           </span>
                         </div>
                         <span className={`font-paragraph text-xs px-3 py-1 rounded ${technician.isAvailable
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-background text-secondary-foreground'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-background text-secondary-foreground'
                           }`}>
                           {technician.isAvailable ? 'Available' : 'Busy'}
                         </span>
