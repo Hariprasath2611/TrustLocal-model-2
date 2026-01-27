@@ -1,5 +1,76 @@
-@import './fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Green Palette - Deep, Trusted, Nature-inspired */
+    --primary: 154 54% 23%; /* #1b5e43 - A more sophisticated deep green */
+    --primary-foreground: 0 0% 100%;
+
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --secondary: 154 20% 96%;
+    --secondary-foreground: 154 30% 20%;
+
+    --muted: 154 10% 94%;
+    --muted-foreground: 154 5% 45%;
+
+    --accent: 154 40% 90%;
+    --accent-foreground: 154 54% 23%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 154 10% 90%;
+    --input: 154 10% 90%;
+    --ring: 154 54% 23%;
+    
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 154 30% 5%;
+    --foreground: 154 10% 98%;
+
+    --primary: 154 54% 35%; /* Lighter green for dark mode contrast */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 154 20% 10%;
+    --secondary-foreground: 154 10% 98%;
+
+    --muted: 154 20% 10%;
+    --muted-foreground: 154 10% 60%;
+
+    --accent: 154 20% 15%;
+    --accent-foreground: 154 10% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 154 20% 15%;
+    --input: 154 20% 15%;
+    --ring: 154 54% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-paragraph antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+}
