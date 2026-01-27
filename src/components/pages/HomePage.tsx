@@ -151,7 +151,7 @@ export default function HomePage() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
             <Image
-              src="https://images.unsplash.com/photo-1581578731117-104f2a412727?q=80&w=1920&auto=format&fit=crop"
+              src="/images/hero.jpg"
               alt="Professional technician at work"
               width={1600}
               className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[2s] ease-out"
@@ -399,7 +399,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-zinc-200 rounded-full overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop"
+                      src="/images/hero.jpg"
                       alt="Avatar"
                       width={48}
                       className="w-full h-full object-cover"
