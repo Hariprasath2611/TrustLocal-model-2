@@ -424,7 +424,19 @@ export default function HomePage() {
 
 // --- Sub-Components ---
 
-const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
+interface Feature {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  stat: string;
+}
+
+interface Step {
+  num: string;
+  text: string;
+}
+
+const FeatureCard = ({ feature, index }: { feature: Feature, index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -458,7 +470,7 @@ const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
   );
 };
 
-const StepItem = ({ step }: { step: any }) => {
+const StepItem = ({ step }: { step: Step }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
 
