@@ -1,8 +1,7 @@
 import { forwardRef, type ImgHTMLAttributes, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-const FALLBACK_IMAGE_URL =
-  "https://static.wixstatic.com/media/12d367_4f26ccd17f8f4e3a8958306ea08c2332~mv2.png";
+const FALLBACK_IMAGE_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect width='100' height='100' fill='%23e5e7eb'/%3E%3Cpath fill='%239ca3af' d='M50 30 L20 60 L80 60 Z'/%3E%3C/svg%3E";
 
 // Simplified props - removing Wix specific fitting/focal point props for now
 export type ImageProps = ImgHTMLAttributes<HTMLImageElement> & {
@@ -27,8 +26,8 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(
 
     const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
       if (!isError) {
-          setIsError(true);
-          setImgSrc(FALLBACK_IMAGE_URL);
+        setIsError(true);
+        setImgSrc(FALLBACK_IMAGE_URL);
       }
       if (onError) {
         onError(e);
