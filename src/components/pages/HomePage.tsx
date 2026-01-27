@@ -1,5 +1,6 @@
 // HPI 1.7-V
-import React, { useRef } from 'react';
+import * as React from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { Image } from '@/components/ui/image';
@@ -388,7 +389,7 @@ export default function HomePage() {
                   style={{
                     top: `${20 + Math.random() * 60}%`,
                     left: `${20 + Math.random() * 60}%`
-                  }}
+                  } as any}
                 >
                   <MapPin className="w-8 h-8 fill-primary stroke-white drop-shadow-lg" />
                 </motion.div>
