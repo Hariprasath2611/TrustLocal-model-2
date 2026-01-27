@@ -233,7 +233,7 @@ export default function HomePage() {
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop"
+                  src="/images/customer.jpg"
                   alt="Customer using app"
                   width={800}
                   className="w-full h-full object-cover"
@@ -280,7 +280,7 @@ export default function HomePage() {
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
                 <Image
-                  src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1920&auto=format&fit=crop"
+                  src="/images/technician.jpg"
                   alt="Technician dashboard"
                   width={800}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
