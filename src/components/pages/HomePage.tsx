@@ -323,7 +323,7 @@ export default function HomePage() {
 
       {/* --- VISUAL BREATHER / PARALLAX --- */}
       <section className="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
-        <ParallaxImage src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1920&auto=format&fit=crop" />
+        <ParallaxImage src="/images/parallax.jpg" />
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="relative z-20 text-center px-6 max-w-4xl">
           <motion.h2
