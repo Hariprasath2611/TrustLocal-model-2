@@ -1,7 +1,7 @@
 // HPI 1.7-V
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { Image } from '@/components/ui/image';
 import { Wrench, UserCheck, Shield, Clock, ArrowRight, CheckCircle2, MapPin, Star } from 'lucide-react';
 import Header from '@/components/Header';
@@ -35,8 +35,6 @@ export default function HomePage() {
     target: containerRef,
     offset: ["start start", "end end"]
   });
-
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   // --- Data Sources (Canonized) ---
   const features = [
@@ -81,10 +79,10 @@ export default function HomePage() {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-background text-foreground overflow-clip selection:bg-primary selection:text-white">
+    <div ref={containerRef} className="min-h-screen bg-background text-foreground overflow-clip selection:bg-primary selection:text-primary-foreground">
       <Header />
 
-      {/* --- HERO SECTION (Inspiration Image Replica) --- */}
+      {/* --- HERO SECTION --- */}
       <section className="relative w-full min-h-screen flex flex-col lg:flex-row pt-20 lg:pt-0 overflow-hidden">
         {/* Left Column: Content & Wireframe */}
         <div className="w-full lg:w-[40%] flex flex-col justify-between px-6 md:px-12 lg:pl-24 lg:pr-12 py-12 lg:py-24 z-10 bg-background">
@@ -98,19 +96,19 @@ export default function HomePage() {
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <span className="font-paragraph text-sm uppercase tracking-widest text-primary font-bold">Live On-Demand Service</span>
               </div>
-              
+
               <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.9] tracking-tight mb-8 text-foreground">
-                Connect With <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Local Service</span> <br/>
+                Connect With <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Local Service</span> <br />
                 Experts
               </h1>
-              
-              <p className="font-paragraph text-lg md:text-xl text-secondary-foreground/80 mb-10 max-w-md leading-relaxed">
+
+              <p className="font-paragraph text-lg md:text-xl text-muted-foreground mb-10 max-w-md leading-relaxed">
                 TrustLocal brings verified technicians to your doorstep. Request services instantly and get connected with skilled professionals in your area.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
+                <Link
                   to="/customer-dashboard"
                   className="group relative overflow-hidden bg-primary text-primary-foreground font-paragraph font-medium text-base px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-primary/20"
                 >
@@ -119,9 +117,9 @@ export default function HomePage() {
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 </Link>
-                <Link 
+                <Link
                   to="/technician-dashboard"
-                  className="group px-8 py-4 rounded-lg border border-neutralborder hover:border-primary transition-colors font-paragraph text-base text-foreground hover:text-primary flex items-center justify-center gap-2"
+                  className="group px-8 py-4 rounded-lg border border-border hover:border-primary transition-colors font-paragraph text-base text-foreground hover:text-primary flex items-center justify-center gap-2"
                 >
                   Join as Technician
                 </Link>
@@ -130,36 +128,36 @@ export default function HomePage() {
           </div>
 
           {/* Bottom Left: Wireframe Motif */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
             className="hidden lg:block w-48 h-48 mt-12 relative"
           >
-            <div className="absolute inset-0 border-l border-b border-neutralborder/50" />
+            <div className="absolute inset-0 border-l border-b border-border/50" />
             <WireframeIllustration />
-            <div className="absolute -bottom-6 -left-6 font-heading text-xs text-neutralborder uppercase tracking-widest">Schematic 01</div>
+            <div className="absolute -bottom-6 -left-6 font-heading text-xs text-muted-foreground uppercase tracking-widest">Schematic 01</div>
           </motion.div>
         </div>
 
         {/* Right Column: Immersive Image */}
         <div className="w-full lg:w-[60%] h-[60vh] lg:h-auto relative p-4 lg:p-8 lg:pl-0">
-          <motion.div 
+          <motion.div
             initial={{ clipPath: 'inset(10% 10% 10% 10% round 24px)' }}
             animate={{ clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-full h-full relative overflow-hidden rounded-[24px] lg:rounded-l-[48px] lg:rounded-r-none shadow-2xl"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
-            <Image 
-              src="https://static.wixstatic.com/media/5283f4_87cf6028cecb4b1d900b47f6d38f0c7f~mv2.png?originWidth=1600&originHeight=896"
+            <Image
+              src="https://images.unsplash.com/photo-1581578731117-104f2a412727?q=80&w=1920&auto=format&fit=crop"
               alt="Professional technician at work"
               width={1600}
               className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[2s] ease-out"
             />
-            
+
             {/* Floating Badge */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
@@ -169,9 +167,9 @@ export default function HomePage() {
                 <div className="p-2 bg-primary/10 rounded-full text-primary">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <span className="font-heading text-sm font-bold">Verified Pro</span>
+                <span className="font-heading text-sm font-bold text-black">Verified Pro</span>
               </div>
-              <p className="font-paragraph text-xs text-secondary-foreground">
+              <p className="font-paragraph text-xs text-zinc-600">
                 "Excellent service and very professional. Fixed my electrical issue in under an hour."
               </p>
             </motion.div>
@@ -181,7 +179,7 @@ export default function HomePage() {
 
       {/* --- TICKER SECTION --- */}
       <div className="w-full bg-primary py-4 overflow-hidden flex relative z-20">
-        <motion.div 
+        <motion.div
           className="flex whitespace-nowrap gap-16 items-center"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
@@ -204,7 +202,7 @@ export default function HomePage() {
             <h2 className="font-heading text-4xl md:text-5xl uppercase text-foreground mb-6">
               Why Choose <span className="text-primary">TrustLocal</span>
             </h2>
-            <p className="font-paragraph text-lg text-secondary-foreground/80">
+            <p className="font-paragraph text-lg text-muted-foreground">
               We connect you with verified professionals who deliver quality service every time.
               Safety, speed, and quality are our core pillars.
             </p>
@@ -226,15 +224,15 @@ export default function HomePage() {
       {/* --- HOW IT WORKS (Split Sticky Scroll) --- */}
       <section className="w-full bg-background relative">
         <div className="max-w-[120rem] mx-auto">
-          
+
           {/* Customer Flow */}
           <div className="flex flex-col lg:flex-row">
             {/* Sticky Visual Side */}
             <div className="w-full lg:w-1/2 h-[60vh] lg:h-screen sticky top-0 flex items-center justify-center bg-secondary overflow-hidden">
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#007A33_1px,transparent_1px)] [background-size:16px_16px]" />
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                 <Image 
-                  src="https://static.wixstatic.com/media/5283f4_593a7e4529f647d9a63c030f92eb2434~mv2.png?originWidth=768&originHeight=960"
+                <Image
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1920&auto=format&fit=crop"
                   alt="Customer using app"
                   width={800}
                   className="w-full h-full object-cover"
@@ -250,21 +248,21 @@ export default function HomePage() {
               <div className="mb-16">
                 <span className="text-primary font-heading text-sm uppercase tracking-widest mb-2 block">The Process</span>
                 <h2 className="font-heading text-4xl md:text-5xl uppercase text-foreground">
-                  Effortless Service <br/> Request
+                  Effortless Service <br /> Request
                 </h2>
               </div>
 
               <div className="space-y-24 relative">
                 {/* Connecting Line */}
-                <div className="absolute left-[19px] top-4 bottom-4 w-px bg-neutralborder" />
-                
+                <div className="absolute left-[19px] top-4 bottom-4 w-px bg-border" />
+
                 {customerSteps.map((step, i) => (
                   <StepItem key={i} step={step} />
                 ))}
               </div>
-              
+
               <div className="mt-24">
-                 <Link 
+                <Link
                   to="/customer-dashboard"
                   className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-lg font-heading uppercase text-sm tracking-widest hover:bg-primary transition-colors"
                 >
@@ -275,13 +273,13 @@ export default function HomePage() {
           </div>
 
           {/* Technician Flow (Inverted) */}
-          <div className="flex flex-col lg:flex-row-reverse border-t border-neutralborder">
+          <div className="flex flex-col lg:flex-row-reverse border-t border-border">
             {/* Sticky Visual Side */}
             <div className="w-full lg:w-1/2 h-[60vh] lg:h-screen sticky top-0 flex items-center justify-center bg-primary overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
-                 <Image 
-                  src="https://static.wixstatic.com/media/5283f4_7dc97caa790e4eadad11d98f669ddcdb~mv2.png?originWidth=768&originHeight=960"
+                <Image
+                  src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1920&auto=format&fit=crop"
                   alt="Technician dashboard"
                   width={800}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
@@ -297,19 +295,19 @@ export default function HomePage() {
               <div className="mb-16">
                 <span className="text-primary font-heading text-sm uppercase tracking-widest mb-2 block">Join The Network</span>
                 <h2 className="font-heading text-4xl md:text-5xl uppercase text-foreground">
-                  Grow Your <br/> Business
+                  Grow Your <br /> Business
                 </h2>
               </div>
 
               <div className="space-y-24 relative">
-                <div className="absolute left-[19px] top-4 bottom-4 w-px bg-neutralborder" />
+                <div className="absolute left-[19px] top-4 bottom-4 w-px bg-border" />
                 {technicianSteps.map((step, i) => (
                   <StepItem key={i} step={step} />
                 ))}
               </div>
 
               <div className="mt-24">
-                 <Link 
+                <Link
                   to="/technician-dashboard"
                   className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-lg font-heading uppercase text-sm tracking-widest hover:bg-primary transition-colors"
                 >
@@ -324,16 +322,16 @@ export default function HomePage() {
 
       {/* --- VISUAL BREATHER / PARALLAX --- */}
       <section className="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
-        <ParallaxImage src="https://static.wixstatic.com/media/5283f4_c9fc59d59a984cee8422c6b7d81ed045~mv2.png?originWidth=1920&originHeight=960" />
+        <ParallaxImage src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1920&auto=format&fit=crop" />
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="relative z-20 text-center px-6 max-w-4xl">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="font-heading text-5xl md:text-7xl uppercase text-white mb-8 leading-tight"
           >
-            Quality Service <br/> <span className="text-primary">Delivered.</span>
+            Quality Service <br /> <span className="text-primary">Delivered.</span>
           </motion.h2>
           <p className="font-paragraph text-xl text-white/90 max-w-2xl mx-auto">
             Join thousands of satisfied customers who have found their trusted home service experts through TrustLocal.
@@ -351,19 +349,19 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-heading text-5xl md:text-7xl uppercase text-white mb-8">
-                Ready to Get <br/> Started?
+                Ready to Get <br /> Started?
               </h2>
               <p className="font-paragraph text-xl text-white/90 mb-12 max-w-xl">
                 Whether you need a repair or want to grow your service business, TrustLocal is your partner in success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
+                <Link
                   to="/customer-dashboard"
                   className="bg-white text-primary font-heading uppercase text-sm tracking-widest px-10 py-5 rounded-lg hover:bg-secondary transition-colors text-center shadow-xl"
                 >
                   Find a Technician
                 </Link>
-                <Link 
+                <Link
                   to="/technicians"
                   className="bg-transparent border border-white text-white font-heading uppercase text-sm tracking-widest px-10 py-5 rounded-lg hover:bg-white/10 transition-colors text-center"
                 >
@@ -371,14 +369,14 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            
+
             {/* Abstract Map Graphic */}
             <div className="relative h-[400px] w-full bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 p-8 flex items-center justify-center overflow-hidden group">
               <div className="absolute inset-0 opacity-30">
-                 {/* Grid Pattern */}
-                 <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                {/* Grid Pattern */}
+                <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
               </div>
-              
+
               {/* Animated Pins */}
               {[...Array(5)].map((_, i) => (
                 <motion.div
@@ -387,32 +385,32 @@ export default function HomePage() {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ delay: i * 0.2, duration: 0.5 }}
-                  style={{ 
-                    top: `${20 + Math.random() * 60}%`, 
-                    left: `${20 + Math.random() * 60}%` 
+                  style={{
+                    top: `${20 + Math.random() * 60}%`,
+                    left: `${20 + Math.random() * 60}%`
                   }}
                 >
                   <MapPin className="w-8 h-8 fill-primary stroke-white drop-shadow-lg" />
                 </motion.div>
               ))}
-              
+
               <div className="relative z-10 bg-white p-6 rounded-xl shadow-2xl max-w-xs transform group-hover:scale-105 transition-transform duration-500">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-secondary rounded-full overflow-hidden">
-                    <Image 
-                      src="https://static.wixstatic.com/media/5283f4_60db51eab51e43c3bffc42906622180b~mv2.png?originWidth=128&originHeight=128"
+                  <div className="w-12 h-12 bg-zinc-200 rounded-full overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop"
                       alt="Avatar"
                       width={48}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div>
-                    <div className="h-2 w-24 bg-neutralborder rounded mb-2" />
-                    <div className="h-2 w-16 bg-neutralborder/50 rounded" />
+                    <div className="h-2 w-24 bg-zinc-200 rounded mb-2" />
+                    <div className="h-2 w-16 bg-zinc-100 rounded" />
                   </div>
                 </div>
-                <div className="h-2 w-full bg-neutralborder/30 rounded mb-2" />
-                <div className="h-2 w-3/4 bg-neutralborder/30 rounded" />
+                <div className="h-2 w-full bg-zinc-100 rounded mb-2" />
+                <div className="h-2 w-3/4 bg-zinc-100 rounded" />
               </div>
             </div>
           </div>
@@ -433,26 +431,26 @@ const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="group relative bg-background p-8 rounded-2xl border border-neutralborder hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+      className="group relative bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
     >
       <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
         <feature.icon className="w-24 h-24 text-primary -rotate-12 translate-x-8 -translate-y-8" />
       </div>
-      
+
       <div className="relative z-10">
-        <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+        <div className="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
           <feature.icon className="w-6 h-6" />
         </div>
-        
+
         <h3 className="font-heading text-xl uppercase text-foreground mb-3 group-hover:text-primary transition-colors">
           {feature.title}
         </h3>
-        
-        <p className="font-paragraph text-base text-secondary-foreground mb-6">
+
+        <p className="font-paragraph text-base text-muted-foreground mb-6">
           {feature.description}
         </p>
-        
-        <div className="pt-6 border-t border-neutralborder group-hover:border-primary/20">
+
+        <div className="pt-6 border-t border-border group-hover:border-primary/20">
           <span className="font-heading text-2xl text-foreground">{feature.stat}</span>
         </div>
       </div>
@@ -467,7 +465,7 @@ const StepItem = ({ step }: { step: any }) => {
   return (
     <div ref={ref} className={`flex gap-8 transition-opacity duration-500 ${isInView ? 'opacity-100' : 'opacity-30'}`}>
       <div className="relative">
-        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center bg-background z-10 relative transition-colors duration-500 ${isInView ? 'border-primary text-primary' : 'border-neutralborder text-neutralborder'}`}>
+        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center bg-background z-10 relative transition-colors duration-500 ${isInView ? 'border-primary text-primary' : 'border-border text-muted-foreground'}`}>
           <span className="font-heading text-sm font-bold">{step.num}</span>
         </div>
       </div>
@@ -491,7 +489,7 @@ const ParallaxImage = ({ src }: { src: string }) => {
   return (
     <div ref={ref} className="absolute inset-0 w-full h-[120%] -top-[10%]">
       <motion.div style={{ y }} className="w-full h-full">
-        <Image 
+        <Image
           src={src}
           alt="Background"
           width={1920}
