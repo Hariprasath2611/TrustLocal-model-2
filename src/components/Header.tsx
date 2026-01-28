@@ -135,13 +135,25 @@ export default function Header() {
                 transition={{ delay: 0.4 }}
                 className="w-full mt-4"
               >
-                <Link
-                  to="/customer-dashboard"
-                  className="flex items-center justify-center w-full py-4 rounded-xl bg-primary text-primary-foreground font-heading text-lg font-bold shadow-xl"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Get Started
-                </Link>
+                {isAuthenticated ? (
+                  <button
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center w-full py-4 rounded-xl border border-destructive/50 text-destructive font-heading text-lg font-bold"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center justify-center w-full py-4 rounded-xl bg-primary text-primary-foreground font-heading text-lg font-bold shadow-xl"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Log In
+                  </Link>
+                )}
               </motion.div>
             </nav>
           </motion.div>

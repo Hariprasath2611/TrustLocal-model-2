@@ -109,8 +109,12 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
+                {/* Request Service Logic */}
                 <Link
-                  to="/customer-dashboard"
+                  to="/customer-dashboard" // ProtectedRoute will handle redirect if needed, but let's be explicit if we can. 
+                  // Actually, redirecting to /customer-dashboard is fine as ProtectedRoute handles it.
+                  // But user asked "if they want to book... they need to logine". 
+                  // So sending them to dashboard (which is protected) is the correct flow.
                   className="group relative overflow-hidden bg-primary text-primary-foreground font-paragraph font-medium text-base px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-primary/20"
                 >
                   <span className="relative z-10 flex items-center gap-2">
