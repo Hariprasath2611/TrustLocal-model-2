@@ -11,10 +11,11 @@ import { cn } from '@/lib/utils';
 import { Image } from '@/components/ui/image';
 
 export default function LoginPage() {
-    const { login, loginAsGuest } = useMember();
+    const { loginWithCredentials, loginAsGuest } = useMember();
     const navigate = useNavigate();
     const [selectedRole, setSelectedRole] = useState<'customer' | 'technician' | null>(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     // Form State
     const [email, setEmail] = useState('');
@@ -25,12 +26,16 @@ export default function LoginPage() {
         if (!selectedRole) return;
 
         setLoading(true);
-        // Simulate network delay
-        setTimeout(() => {
-            login(selectedRole);
-            setLoading(false);
+        setError(null);
+
+        const success = await loginWithCredentials(email, password, selectedRole);
+
+        if (success) {
             navigate(selectedRole === 'customer' ? '/customer-dashboard' : '/technician-dashboard');
-        }, 800);
+        } else {
+            setError("Invalid email or password. Please try again.");
+        }
+        setLoading(false);
     };
 
     const handleGuestAccess = () => {
@@ -172,6 +177,12 @@ export default function LoginPage() {
                                             className="h-12 border-muted"
                                         />
                                     </div>
+
+                                    {error && (
+                                        <div className="text-sm text-destructive font-medium text-center">
+                                            {error}
+                                        </div>
+                                    )}
 
                                     <Button
                                         onClick={handleLogin}
