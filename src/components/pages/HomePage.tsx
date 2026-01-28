@@ -155,7 +155,7 @@ export default function HomePage() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
             <Image
-              src="/images/hero.jpg"
+              src="/images/hero.png"
               alt="Professional technician at work"
               width={1600}
               className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[2s] ease-out"
@@ -237,7 +237,7 @@ export default function HomePage() {
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/customer.jpg"
+                  src="/images/customer.png"
                   alt="Customer using app"
                   width={800}
                   className="w-full h-full object-cover"
@@ -284,7 +284,7 @@ export default function HomePage() {
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
               <div className="relative w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
                 <Image
-                  src="/images/technician.jpg"
+                  src="/images/technician.png"
                   alt="Technician dashboard"
                   width={800}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
