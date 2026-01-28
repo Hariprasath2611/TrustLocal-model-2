@@ -3,10 +3,12 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useMember } from '@/context/MemberContext';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isAuthenticated, userType, logout } = useMember();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,8 +21,13 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Find Technicians', path: '/technicians' },
-    { name: 'For Customers', path: '/customer-dashboard' },
-    { name: 'For Professionals', path: '/technician-dashboard' },
+    // Conditionally render links
+    ...(!isAuthenticated ? [
+      { name: 'For Customers', path: '/customer-dashboard' }, // This will redirect to login via ProtectedRoute
+      { name: 'For Professionals', path: '/technician-dashboard' },
+    ] : []),
+    ...(userType === 'customer' ? [{ name: 'Dashboard', path: '/customer-dashboard' }] : []),
+    ...(userType === 'technician' ? [{ name: 'Dashboard', path: '/technician-dashboard' }] : []),
   ];
 
   return (
@@ -59,15 +66,30 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/customer-dashboard"
-              className={cn(
-                "ml-4 px-6 py-2.5 rounded-full font-heading font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5",
-                "bg-primary text-primary-foreground hover:bg-primary/90"
-              )}
-            >
-              Get Started
-            </Link>
+
+            {isAuthenticated ? (
+              <div className="flex items-center gap-4 ml-4">
+                <div className="text-sm font-medium hidden lg:block">
+                  {userType === 'customer' ? 'Hello, Customer' : 'Hello, Pro'}
+                </div>
+                <button
+                  onClick={logout}
+                  className="px-6 py-2.5 rounded-full font-heading font-medium text-sm transition-all duration-300 border border-border hover:bg-destructive/10 hover:text-destructive hover:border-destructive"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className={cn(
+                  "ml-4 px-6 py-2.5 rounded-full font-heading font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5",
+                  "bg-primary text-primary-foreground hover:bg-primary/90"
+                )}
+              >
+                Log In
+              </Link>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
