@@ -403,7 +403,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-zinc-200 rounded-full overflow-hidden">
                     <Image
-                      src="/images/hero.jpg"
+                      src="/images/hero.png"
                       alt="Avatar"
                       width={48}
                       className="w-full h-full object-cover"
