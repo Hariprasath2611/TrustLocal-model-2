@@ -1,8 +1,17 @@
+import { MemberProvider, useMember } from '@/context/MemberContext';
+import { createBrowserRouter, RouterProvider, Navigate, Outlet, useLocation } from 'react-router-dom';
+import { ScrollToTop } from '@/lib/scroll-to-top';
+import ErrorPage from '@/components/pages/ErrorPage';
+import HomePage from '@/components/pages/HomePage';
+import CustomerDashboard from '@/components/pages/CustomerDashboard';
+import ServiceRequestDetails from '@/components/pages/ServiceRequestDetails';
+import TechnicianDashboard from '@/components/pages/TechnicianDashboard';
+import TechnicianProfile from '@/components/pages/TechnicianProfile';
+import TechniciansDirectory from '@/components/pages/TechniciansDirectory';
+import LoginPage from '@/components/pages/LoginPage';
 import { MapProvider } from '@/context/MapContext';
 import { CustomerMap } from '@/components/Map/CustomerMap';
 import { TechnicianMap } from '@/components/Map/TechnicianMap';
-
-// ... existing imports ...
 
 // ... existing code ...
 
